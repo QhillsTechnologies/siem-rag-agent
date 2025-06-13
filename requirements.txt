@@ -1,0 +1,8 @@
+streamlit
+langchain
+langchain-community
+openai
+chromadb
+pydantic
+pydantic-ai
+chromadb

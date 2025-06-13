@@ -1,0 +1,9 @@
+.venv
+./venv
+/.venv
+.env
+__pycache__
+/__pycache__
+./chroma_db
+/.chroma_db
+chroma_db/

